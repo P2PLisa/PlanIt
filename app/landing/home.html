@@ -1,0 +1,20 @@
+<body ng-controller="HomeCtrl" ng-cloak>
+<md-toolbar>
+    <div class="md-toolbar-tools" class="md-hue-2">
+        <h2><span>Plan It</span></h2>
+        <span flex></span>
+        <md-button aria-label="sign-in" href="#!/login" class="md-accent md-raised">
+            Sign in
+        </md-button>
+    </div>
+</md-toolbar>
+<div ng-style="{'background-image':'url(/static/'+imgURL+')'}">
+    <md-content class="menu-container" layout="column">
+        <h1>Organize everyone's ideas</h1>
+        <h4>Put them into one place for free!</h4>
+    </md-content>
+    <md-button aria-label="sign-up" href="#!/register" class="md-accent md-raised" center>
+        Sign Up
+    </md-button>
+</div>
+</body>
