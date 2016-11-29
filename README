@@ -15,3 +15,7 @@ Technologies and frameworks
   -HTML 5
   -DynamoDB with Java
   -Java Spring framework
+
+
+Deploy Link:  https://planit.mybluemix.net/
+User Table:  https://us-east-2.console.aws.amazon.com/dynamodb/home?region=us-east-2#tables:selected=UserInfo
