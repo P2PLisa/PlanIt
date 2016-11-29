@@ -18,3 +18,4 @@ Technologies and frameworks
 
 
 Deploy Link:  https://planit.mybluemix.net/
+User Table:  https://us-east-2.console.aws.amazon.com/dynamodb/home?region=us-east-2#tables:selected=UserInfo
