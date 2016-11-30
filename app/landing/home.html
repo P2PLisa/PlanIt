@@ -1,0 +1,24 @@
+<body ng-controller="HomeCtrl" ng-cloak>
+<md-toolbar>
+    <div class="md-toolbar-tools" class="md-hue-2">
+        <h2><span>Plan It</span></h2>
+        <span flex></span>
+        <md-button aria-label="sign-in" href="#!/login" class="md-accent md-raised">
+            Sign in
+        </md-button>
+    </div>
+</md-toolbar>
+<div layout="column" layout-flex ng-style="{'position': 'absolute', 'height':'92.5%','min-height': '92.5%', 'width': '100%', 'background-image':'url(app/landing/home.jpg)'}">
+    <!--</md-content>-->
+    <div flex="30" layout="column" layout-align="center center">
+        <h1>Organize everyone's ideas</h1>
+        <h3 style="color: #545b5c">Put them into one place for free!</h3>
+    </div>
+
+    <div flex="40" layout="row" layout-align="center center">
+        <md-button aria-label="sign-up" href="#!/register" class="md-accent md-raised">
+            Sign Up
+        </md-button>
+    </div>
+</div>
+</body>
