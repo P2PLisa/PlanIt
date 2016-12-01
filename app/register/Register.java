@@ -27,6 +27,7 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
 public class Register {
 
+  // Helper function to add a new user.
   private static Map<String, AttributeValue> addUser(String username, String password, String email, String hash) {
       Map<String, AttributeValue> user = new HashMap<String, AttributeValue>();
       user.put("Username", new AttributeValue(username));
@@ -42,5 +43,7 @@ public class Register {
     new ProfileCredentialsProvider()));
 
     Table table = dynamoDB.getTable("UserInfo");
+
+    // TODO: get info from endpoints and add it to the table.
   }
 }
