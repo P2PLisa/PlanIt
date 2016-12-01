@@ -30,14 +30,17 @@ public class Register {
   private static Map<String, AttributeValue> addUser(String username, String password, String email, String hash) {
       Map<String, AttributeValue> user = new HashMap<String, AttributeValue>();
       user.put("Username", new AttributeValue(username));
-      user.put("year", new AttributeValue(password));
-      user.put("rating", new AttributeValue(email));
-      user.put("fans", new AttributeValue(hash));
+      user.put("Password", new AttributeValue(password));
+      user.put("Email", new AttributeValue(email));
+      user.put("Hash", new AttributeValue(hash));
 
       return user;
   }
 
   public static void main(String[] args) throws Exception {
+    DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
+    new ProfileCredentialsProvider()));
 
+    Table table = dynamoDB.getTable("UserInfo");
   }
 }
