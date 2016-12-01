@@ -17,8 +17,6 @@ angular.module('myApp.create', ['ngRoute'])
         $scope.base_url = "https://www.google.com";
 
         //Get the unique project id or number or however we reference a project
-        $scope.hash = $routeParams.params;
-        console.log($scope.hash)
 
 
         $scope.create = function () {
