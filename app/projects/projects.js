@@ -16,26 +16,32 @@ angular.module('myApp.projects', ['ngRoute'])
 
         $scope.base_url = "https://www.google.com";
         $scope.projects = [{
+            "hash": '001',
             "title": "Plan It",
             "description": "A project brainstorming app that also helps you pick languages and framework for your project."
         }, {
+            "hash": '002',
             "title": "Plan It",
             "description": "A project brainstorming app that also helps you pick languages and framework for your project."
         }, {
+            "hash": '003',
             "title": "Plan It",
             "description": "A project brainstorming app that also helps you pick languages and framework for your project."
         }, {
+            "hash": '004',
             "title": "Plan It",
             "description": "A project brainstorming app that also helps you pick languages and framework for your project."
         }, {
+            "hash": '005',
             "title": "Plan It",
             "description": "A project brainstorming app that also helps you pick languages and framework for your project."
         }];
         console.log($scope.projects)
 
 
-        $scope.view = function () {
-            $location.path('/create')
+        $scope.view = function (hash) {
+            console.log(hash)
+            $location.path('/create').search({params: hash})
         }
 
         $scope.authenticate = function () {

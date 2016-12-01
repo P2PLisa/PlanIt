@@ -8,23 +8,10 @@ angular.module('myApp', [
     'myApp.login',
     'myApp.register',
     'myApp.projects',
+    'myApp.create',
     'myApp.version'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
     $routeProvider.otherwise({redirectTo: '/home'});
-}]).factory('projectdata', function() {
-    var savedData = {}
-    function set(data) {
-        savedData = data;
-    }
-    function get() {
-        return savedData;
-    }
-
-    return {
-        set: set,
-        get: get
-    }
-
-});
+}]);
