@@ -8,7 +8,8 @@ angular.module('myApp.projects', ['ngRoute'])
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
         $routeProvider.when('/projects', {
             templateUrl: 'app/projects/projects.html',
-            controller: 'ProjectsCtrl'
+            controller: 'ProjectsCtrl',
+            css: 'app/projects/projects.css'
         });
     }])
 
