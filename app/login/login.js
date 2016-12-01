@@ -12,9 +12,9 @@ angular.module('myApp.login', ['ngRoute'])
         });
     }])
 
-    .controller('LoginCtrl', function ($scope, $location) {
+    .controller('LoginCtrl', function ($scope, $location, $http) {
 
-        $scope.base_url = "https://www.google.com";
+        $scope.base_url = "https://planit.mybluemix.net";
         $scope.login = {
             user: '',
             password: ''
@@ -24,10 +24,10 @@ angular.module('myApp.login', ['ngRoute'])
             // POST request for logging in a user
             $http({
                 method: 'POST',
-                url: $scope.base_url + '/some-endpoint',
+                url: $scope.base_url + '/signin',
                 withCredentials: true,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: $.param({name: $scope.login.user, password: $scope.login.password})
+                data: {name: $scope.login.user, password: $scope.login.password}
             }).then(function successCallback(response) {
                 //All data returned will be under response.data
             }, function errorCallback(response) {
