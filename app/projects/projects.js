@@ -15,11 +15,22 @@ angular.module('myApp.projects', ['ngRoute'])
     .controller('ProjectsCtrl', function ($scope, $location, $http) {
 
         $scope.base_url = "https://www.google.com";
-        $scope.projects = {
-            "projects": {"title": "Plan It",
+        $scope.projects = [{
+            "title": "Plan It",
             "description": "A project brainstorming app that also helps you pick languages and framework for your project."
-            }
-        };
+        }, {
+            "title": "Plan It",
+            "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }, {
+            "title": "Plan It",
+            "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }, {
+            "title": "Plan It",
+            "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }, {
+            "title": "Plan It",
+            "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }];
         console.log($scope.projects)
 
 
