@@ -6,21 +6,21 @@ angular.module('myApp.projects', ['ngRoute'])
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.defaults.headers.common["Accept"] = "application/json";
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-        $routeProvider.when('/login', {
-            templateUrl: 'app/login/login.html',
-            controller: 'LoginCtrl'
+        $routeProvider.when('/projects', {
+            templateUrl: 'app/projects/projects.html',
+            controller: 'ProjectsCtrl'
         });
     }])
 
-    .controller('ProjectCtrl', function ($scope, $location, $http) {
+    .controller('ProjectsCtrl', function ($scope, $location, $http) {
 
         $scope.base_url = "https://www.google.com";
         $scope.projects = {
-            "projects": [{"title": "Plan It",
+            "projects": {"title": "Plan It",
             "description": "A project brainstorming app that also helps you pick languages and framework for your project."
-            }]
+            }
         };
-
+        console.log($scope.projects)
 
 
         $scope.view = function () {
