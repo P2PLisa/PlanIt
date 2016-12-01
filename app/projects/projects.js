@@ -35,7 +35,7 @@ angular.module('myApp.projects', ['ngRoute'])
 
 
         $scope.view = function () {
-
+            $location.path('/create')
         }
 
         $scope.authenticate = function () {
