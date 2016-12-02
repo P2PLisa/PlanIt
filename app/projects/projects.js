@@ -15,6 +15,11 @@ angular.module('myApp.projects', ['ngRoute'])
 
     .controller('ProjectsCtrl', function ($scope, $location, $http) {
 
+        $scope.create = false;
+        $scope.workspace = {
+            name: '',
+            description: ''
+        }
         $scope.base_url = "https://www.google.com";
         $scope.projects = [{
             "hash": '001',
@@ -42,7 +47,7 @@ angular.module('myApp.projects', ['ngRoute'])
 
         $scope.view = function (hash) {
             console.log(hash)
-            // $location.path('/create').search({params: hash})
+            $location.path('/workspace').search({params: hash})
         }
 
         $scope.authenticate = function () {

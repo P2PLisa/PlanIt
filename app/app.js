@@ -8,7 +8,7 @@ angular.module('myApp', [
     'myApp.login',
     'myApp.register',
     'myApp.projects',
-    'myApp.create',
+    'myApp.workspace',
     'myApp.version'
 ]).directive('head', ['$rootScope', '$compile',
     function ($rootScope, $compile) {
