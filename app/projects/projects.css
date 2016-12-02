@@ -1,0 +1,12 @@
+.createbtn {
+    padding: 0 6px 0 6px;
+    margin: 8px 10px 8px 10px;
+    min-width: 128px;
+    border-radius: 3px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration:none;
+    border: none;
+    outline: none;
+}

@@ -29,7 +29,12 @@ angular.module('myApp.register', ['ngRoute'])
                 url: $scope.base_url + '/register',
                 withCredentials: true,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: {first: $scope.register.first, last: $scope.register.last, name: $scope.register.user, password: $scope.register.password}
+                data: {
+                    first: $scope.register.first,
+                    last: $scope.register.last,
+                    name: $scope.register.user,
+                    password: $scope.register.password
+                }
             }).then(function successCallback(response) {
                 //All data returned will be under response.data
             }, function errorCallback(response) {
