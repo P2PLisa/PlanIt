@@ -10,29 +10,73 @@
         </md-button>
     </div>
 </md-toolbar>
-<div class="md-padding" layout="row" layout-wrap>
-    <md-card flex="30" ng-repeat="item in projects">
-        <md-card-content>
-            <div flex layout="column">
+<div ng-show="!create">
+    <div class="md-padding" layout="row" layout-wrap>
+        <md-card flex="30" ng-repeat="item in projects">
+            <md-card-content>
+                <div flex layout="column">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{item.title}}</span>
+                            <span class="md-subhead">{{item.description}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <p>
+                        <md-button aria-label="view-project" ng-click="view(item.hash)" class="md-accent md-raised">
+                            View Project ->
+                        </md-button>
+                    </p>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div layout="row" layout-align="center">
+        <md-button aria-label="create project" ng-click="create = !create" class="md-primary md-raised createbtn">
+            Create New Project
+        </md-button>
+    </div>
+</div>
+<div ng-show="create">
+    <md-content layout="row"
+                layout-align="space-around" layout-padding="layout-padding"
+                ng-cloak="ng-cloak">
+        <md-card flex="flex" flex-gt-sm="66" flex-gt-md="33">
+            <md-card-content>
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">{{item.title}}</span>
-                        <span class="md-subhead">{{item.description}}</span>
+                        <span class="md-headline">Create New Brainstorming Workspace</span>
+                        <span class="md-subhead">Note: This will essentially create a new "folder" to hold all of your fantastic ideas!</span>
                     </md-card-title-text>
                 </md-card-title>
-                <p>
-                    <md-button aria-label="view-project" ng-click="view(item.hash)" class="md-accent md-raised">
-                        View Project ->
-                    </md-button>
-                </p>
-            </div>
-        </md-card-content>
-    </md-card>
-</div>
-<div layout="row" layout-align="center">
-    <md-button aria-label="create project" href="#!/create" class="md-primary md-raised createbtn">
-        Create New Project
-    </md-button>
+                <form name="Form">
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input type="text" name="name" ng-model="workspace.name" placeholder="Workspace Name" required=""/>
+                        <div ng-messages="Form.name.$error" role="alert" multiple="">
+                            <div ng-message="required" class="my-message">You must supply a workspace.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Description (Optional)</label>
+                        <input type="text" name="description" ng-model="workspace.description" placeholder="Description"
+                               md-maxlength="60"/>
+                        <div ng-messages="Form.description.$error" role="alert" multiple="">
+                            <div ng-message="md-maxlength" class="my-message">Description too long.</div>
+                        </div>
+                    </md-input-container>
+                    <div layout-gt-sm="row">
+                        <md-button ng-disabled="!Form.$valid" ng-click="create = !create" class="md-raised md-accent">&nbsp Cancel
+                            &nbsp
+                        </md-button>
+                        <span flex/>
+                        <md-button href="#!/create" class="btnRegister md-raised md-primary">&nbsp Submit
+                            &nbsp
+                        </md-button>
+                    </div>
+                </form>
+            </md-card-content>
+        </md-card>
+    </md-content>
 </div>
 
 </body>
