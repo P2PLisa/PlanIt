@@ -1,18 +1,18 @@
 'use strict';
 
-angular.module('myApp.create', ['ngRoute'])
+angular.module('myApp.workspace', ['ngRoute'])
 
     .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.defaults.headers.common["Accept"] = "application/json";
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-        $routeProvider.when('/create', {
-            templateUrl: 'app/projects/create.html',
-            controller: 'CreateCtrl'
+        $routeProvider.when('/workspace', {
+            templateUrl: 'app/projects/workspace.html',
+            controller: 'WorkspaceCtrl'
         });
     }])
 
-    .controller('CreateCtrl', function ($scope, $location, $http, $routeParams) {
+    .controller('WorkspaceCtrl', function ($scope, $location, $http, $routeParams) {
 
         $scope.base_url = "https://www.google.com";
 
