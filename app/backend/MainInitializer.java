@@ -6,7 +6,7 @@ public class MainInitializer extends AbstractAnnotationConfigDispatcherServletIn
   
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { MainInitializer.class };
+        return new Class[] { DefaultConfig.class };
     }
    
     @Override
