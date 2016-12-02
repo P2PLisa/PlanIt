@@ -8,7 +8,7 @@ public class MainSpringCtrl {
  
       @RequestMapping(method = RequestMethod.GET)
         public String getIndexPage() {
-            return "MainPage";
+            return "index";
         }
  
 }

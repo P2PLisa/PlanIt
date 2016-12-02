@@ -1,0 +1,25 @@
+.definite {
+   color: #43A047;
+}
+.definite md-card {
+    color: #FFFFFF;
+    background-color: #43A047;
+}
+
+.maybe {
+    color: #FFB300;
+}
+
+.maybe md-card {
+    color: #FFFFFF;
+    background-color: #FFB300;
+}
+
+.question {
+    color: #FF1744;
+}
+
+.question md-card {
+    color: #FFFFFF;
+    background-color: #FF1744;
+}

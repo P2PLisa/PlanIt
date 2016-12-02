@@ -8,7 +8,8 @@ angular.module('myApp.workspace', ['ngRoute', 'ngMaterial'])
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
         $routeProvider.when('/workspace', {
             templateUrl: 'app/projects/workspace.html',
-            controller: 'WorkspaceCtrl'
+            controller: 'WorkspaceCtrl',
+            css: 'app/projects/workspace.css'
         });
     }])
 
@@ -19,21 +20,29 @@ angular.module('myApp.workspace', ['ngRoute', 'ngMaterial'])
         //Get the unique project id or number or however we reference a project
         $scope.topbar =
             [{
-                "title": "Plan It",
+                "title": "My Plan",
                 "description": "A project brainstorming app that also helps you pick languages and framework for your project."
             }, {
-                "title": "Plan It",
+                "title": "Dont Plan It",
                 "description": "A project brainstorming app that also helps you pick languages and framework for your project."
-        }, {
-                "title": "Plan It",
+            }, {
+                "title": "What Plan It",
                 "description": "A project brainstorming app that also helps you pick languages and framework for your project."
-        }, {
-                "title": "Plan It",
+            }, {
+                "title": "Who's Plan It",
                 "description": "A project brainstorming app that also helps you pick languages and framework for your project."
-        }, {
-                "title": "Plan It",
+            }, {
+                "title": "This Plan It",
                 "description": "A project brainstorming app that also helps you pick languages and framework for your project."
-        }];
+            },
+                {
+                    "title": "This Plan It",
+                    "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+                },
+                {
+                    "title": "This Plan It",
+                    "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+                }];
 
         $scope.create = function () {
             // POST request for logging in a user
