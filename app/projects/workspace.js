@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.workspace', ['ngRoute'])
+angular.module('myApp.workspace', ['ngRoute', 'ngMaterial'])
 
     .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -17,7 +17,23 @@ angular.module('myApp.workspace', ['ngRoute'])
         $scope.base_url = "https://www.google.com";
 
         //Get the unique project id or number or however we reference a project
-
+        $scope.topbar =
+            [{
+                "title": "Plan It",
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+            }, {
+                "title": "Plan It",
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }, {
+                "title": "Plan It",
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }, {
+                "title": "Plan It",
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }, {
+                "title": "Plan It",
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+        }];
 
         $scope.create = function () {
             // POST request for logging in a user
