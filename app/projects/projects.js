@@ -47,7 +47,7 @@ angular.module('myApp.projects', ['ngRoute'])
 
         $scope.view = function (hash) {
             console.log(hash)
-            // $location.path('/create').search({params: hash})
+            $location.path('/workspace').search({params: hash})
         }
 
         $scope.authenticate = function () {
