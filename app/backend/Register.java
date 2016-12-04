@@ -25,40 +25,23 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-@Controller
-@RequestMapping("/register")
 public class Register {
 
   // Helper function to add a new user.
-  private static Map<String, AttributeValue> addUser(
-  @RequestParam(value="user", required=true) String username,
-  @RequestParam(value="password", required=true) String password,
-  @RequestParam(value="email", required=true) String email) {
+  public void addUser(User user) {
 
-      User u = new User(0, username, "", email, password);
-      UserServices.createUser(u);
       Map<String, AttributeValue> user = new HashMap<String, AttributeValue>();
-      user.put("Username", new AttributeValue(username));
-      user.put("Password", new AttributeValue(password));
-      user.put("Email", new AttributeValue(email));
-      user.put("Hash", new AttributeValue(u.hashCode()));
+      user.put("Username", new AttributeValue(user.getUsername()));
+      user.put("Password", new AttributeValue(user.getPassword()));
+      user.put("Email", new AttributeValue(user.getEmail()));
+      user.put("Hash", new AttributeValue(user.hashCode()));
 
-      return user;
-  }
+      DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
+      new ProfileCredentialsProvider()));
 
-  public static void main(String[] args) throws Exception {
-    DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
-    new ProfileCredentialsProvider()));
-
-    Table table = dynamoDB.getTable("UserInfo");
-
-    Map<String, AttributeValue> item = addUser(u);
-    PutItemRequest putItemRequest = new PutItemRequest(table, item);
-    PutItemResult putItemResult = dynamoDB.putItem(putItemRequest);
+      Table table = dynamoDB.getTable("UserInfo");
+      PutItemRequest putItemRequest = new PutItemRequest(table, user);
+      PutItemResult putItemResult = dynamoDB.putItem(putItemRequest);
 
   }
 }

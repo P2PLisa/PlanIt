@@ -19,12 +19,12 @@ public class UserServicesImpl implements UserServices{
     public void createUser(User user) {
         user.setId(counter.incrementAndGet());
         users.add(user);
+        Register.addUser(user);
     }
 
     public void loginUser(User user) {
-	      // check if user exists
-        if (!doesUserExist(user)) {
-          // Don't really do anything if they don't exist.
+
+        if (doesUserExist(user)) { // check if user exists
         }
 	      //log them in...
     }

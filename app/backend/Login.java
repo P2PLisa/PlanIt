@@ -25,12 +25,11 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-@Controller
-@RequestMapping("/login")
 public class Login {
+  public static void main(String[] args) throws Exception {
+    DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
+    new ProfileCredentialsProvider()));
 
+    Table table = dynamoDB.getTable("UserInfo");
+  }
 }
