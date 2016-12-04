@@ -28,12 +28,13 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
 public class Register {
 
   // Helper function to add a new user.
-  private static Map<String, AttributeValue> addUser(String username, String password, String email, String hash) {
+  private static Map<String, AttributeValue> addUser(User u) {
+      createUser(u);
       Map<String, AttributeValue> user = new HashMap<String, AttributeValue>();
-      user.put("Username", new AttributeValue(username));
-      user.put("Password", new AttributeValue(password));
-      user.put("Email", new AttributeValue(email));
-      user.put("Hash", new AttributeValue(hash));
+      user.put("Username", new AttributeValue(u.getUsername()));
+      user.put("Password", new AttributeValue(u.getAddress()));
+      user.put("Email", new AttributeValue(u.getEmail()));
+      user.put("Hash", new AttributeValue(u.hashCode()));
 
       return user;
   }
