@@ -8,15 +8,19 @@ public class User {
 
     private String email;
 
-    public User(){
+    private String password;
+
+    public User() {
         id=0;
     }
 
-    public User(long id, String username, String address, String email) {
+    // Constructor
+    public User(long id, String username, String address, String email, String password) {
         this.id = id;
         this.username = username;
         this.address = address;
         this.email = email;
+        this.password = password;
     }
 
     public long getId() {
@@ -51,6 +55,15 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+      return password;
+    }
+
+    public void setPassword(String password) {
+      this.password = password;
+    }
+
+    // Generate a hash code based on the id given to the user.
     @Override
     public int hashCode() {
         final int prime = 31;

@@ -11,4 +11,14 @@ public class MainSpringCtrl {
             return "index";
         }
 
+      @RequestMapping(method = RequestMethod.GET)
+        public String getRegisterPage() {
+            return "register";
+        }
+
+      @RequestMapping(method = RequestMethod.GET)
+        public String getIndexPage() {
+            return "index";
+        }
+
 }

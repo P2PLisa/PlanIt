@@ -32,7 +32,7 @@ public class Register {
       createUser(u);
       Map<String, AttributeValue> user = new HashMap<String, AttributeValue>();
       user.put("Username", new AttributeValue(u.getUsername()));
-      user.put("Password", new AttributeValue(u.getAddress()));
+      user.put("Password", new AttributeValue(u.getPassword()));
       user.put("Email", new AttributeValue(u.getEmail()));
       user.put("Hash", new AttributeValue(u.hashCode()));
 
