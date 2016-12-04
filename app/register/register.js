@@ -16,6 +16,7 @@ angular.module('myApp.register', ['ngRoute'])
         $scope.register = {
             first: '',
             last: '',
+            email: '',
             user: '',
             password: ''
         };
@@ -33,7 +34,7 @@ angular.module('myApp.register', ['ngRoute'])
                     first: $scope.register.first,
                     last: $scope.register.last,
                     email: $scope.register.email,
-                    name: $scope.register.user,
+                    user: $scope.register.user,
                     password: $scope.register.password
                 }
             }).then(function successCallback(response) {
