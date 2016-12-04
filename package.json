@@ -19,7 +19,8 @@
     "protractor": "^4.0.9"
   },
   "scripts": {
-    "postinstall": "npm install -g bower",
+    "preinstall": "npm install -g bower",
+    "postinstall": "bower install",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
 
