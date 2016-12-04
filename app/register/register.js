@@ -32,6 +32,7 @@ angular.module('myApp.register', ['ngRoute'])
                 data: {
                     first: $scope.register.first,
                     last: $scope.register.last,
+                    email: $scope.register.email,
                     name: $scope.register.user,
                     password: $scope.register.password
                 }

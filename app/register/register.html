@@ -25,6 +25,13 @@
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input type="email" name="email" ng-model="register.email" placeholder="Email" required=""/>
+                    <div ng-messages="Form.email.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">You must supply a valid email.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
                     <label>User Name</label>
                     <input type="text" name="user" ng-model="register.user" placeholder="User Name" required=""/>
                     <div ng-messages="Form.last.$error" role="alert" multiple="">
