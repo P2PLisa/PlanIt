@@ -16,7 +16,6 @@ app.set('views', __dirname + '/app/register/');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 var router = express.Router();
-
 router.use(function(req, res, next) {
 	next();
 });
@@ -26,7 +25,7 @@ router.get('/:username', function(req, res) {
 	res.send('req.username');
 });
 
-router.get('/', function(req, res) {
+router.get('/register', function(req, res) {
 	//console.log("kill me");
 	res.render('register.html');
 	//res.send('moooo');
@@ -34,7 +33,7 @@ router.get('/', function(req, res) {
 
 
 // set the home page route
-app.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 	console.log("yay this works");
     // make sure index is in the right directory. In this case /index.html
     res.render('index');
@@ -46,7 +45,7 @@ app.post('/signin/grr', function(request, response, next){
 	response.send({password: "newElement"});
 });
 
-app.use('/register', router);
+app.use('/', router);
 
 //app.get('/register', function(request, response, next){
 //	response.send({password: "newElement"});
