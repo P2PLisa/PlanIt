@@ -24,6 +24,10 @@ app.post('/register/grr/', function(request, response, next){
 	response.send({password: "newElement"});
 });
 
+app.get('/register', function(request, response, next){
+	response.send({password: "newElement"});
+});
+
 app.post('/register/:username/', function(request, response, next){
   // Now we automatically get the story in the request object
   // We use story ID to create a new element for that story
