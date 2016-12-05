@@ -62,28 +62,46 @@ app.post('/signin/grr', function(request, response, next){
 app.post('/signin/:username', function(request, response, next){
 	console.log("meowy");
 	var docClient = new AWS.DynamoDB.DocumentClient();
-    var params = {
-        TableName: "UserInfo",
-        KeyConditionExpression: "#username = :username",
-        ExpressionAttributeNames:{
-            "#username": "request.user"
-            },
-        ExpressionAttributeValues: {
-            ":email": request.user,
-            ":password": request.password
-            }
-        };
-    docClient.query(params, function(err, data) {
-	    if (err) {
-	    	response.status("Unable to query. Error:").send(JSON.stringify(err, null, 2))
-	        //response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
-	    } else {
-	        response.send("Query succeeded.");
-	        data.Items.forEach(function(item) {
-	            //response.send()
-	        });
-	    }
-	});
+	var username = 'bob';
+
+	var params = {
+	TableName: 'UserInfo',
+	Item:{
+	"username": 'bob',
+	"email": 'blah'
+	}
+	};
+
+	console.log("Adding a new item...");
+	docClient.put(params, function(err, data) {
+		if (err) {
+		console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+		} else {
+		console.log("Added item:", JSON.stringify(data, null, 2));
+		}
+		});
+ //    var params = {
+ //        TableName: "UserInfo",
+ //        KeyConditionExpression: "#username = :username",
+ //        ExpressionAttributeNames:{
+ //            "#username": "request.user"
+ //            },
+ //        ExpressionAttributeValues: {
+ //            ":email": request.user,
+ //            ":password": request.password
+ //            }
+ //        };
+ //    docClient.query(params, function(err, data) {
+	//     if (err) {
+	//     	response.status("Unable to query. Error:").send(JSON.stringify(err, null, 2))
+	//         //response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
+	//     } else {
+	//         response.send("Query succeeded.");
+	//         data.Items.forEach(function(item) {
+	//             //response.send()
+	//         });
+	//     }
+	// });
 	
 	response.send({username: request.user, password: "newElement", user: request.user});
 });
