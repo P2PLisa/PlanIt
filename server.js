@@ -3,12 +3,12 @@ var app = express();
 var cfenv = require('cfenv'); //for cloud foundry shizz
 var env = cfenv.getAppEnv();
 var AWS = require("aws-sdk");
-var bodyParser = require('body-parser');
-var fs = require('fs');
-var dynamodb = new AWS.DynamoDB();
 process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
 process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
 process.env.AWS_REGION = 'us-west-2';
+var bodyParser = require('body-parser');
+var fs = require('fs');
+var dynamodb = new AWS.DynamoDB();
 var myCredentials = new AWS.EnvironmentCredentials('AWS');
 var myConfig = new AWS.Config({
   credentials: myCredentials, region: 'us-west-2'
