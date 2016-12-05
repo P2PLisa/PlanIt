@@ -91,7 +91,7 @@ app.post('/register/:username', function(request, response, next){
 	console.log(request.user);
 	console.log(request.name);
 	var docClient = new AWS.DynamoDB.DocumentClient();
-	var username = request.register.name;
+	var username = request.username;
 	var email = request.email;
 
 	var params = {
