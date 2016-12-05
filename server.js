@@ -6,7 +6,7 @@ var AWS = require("aws-sdk");
 var fs = require('fs');
 process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
 process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
-var myCredentials = new AWS.CognitoIdentityCredentials({IdentityPoolId:'IDENTITY_POOL_ID'});
+var myCredentials = new AWS.EnvironmentCredentials('AWS');
 var myConfig = new AWS.Config({
   credentials: myCredentials, region: 'us-west-2'
 });
