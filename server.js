@@ -63,6 +63,7 @@ app.post('/signin/grr', function(request, response, next){
 });
 app.post('/signin/:username', function(request, response, next){
 	console.log("meow");
+	process.env.AWS_REGION = 'us-west-2';
 	var docClient = new AWS.DynamoDB.DocumentClient();
 
 	var params = {
@@ -113,12 +114,13 @@ app.post('/register/:username', function(request, response, next){
 	//var docClient = new AWS.DynamoDB.DocumentClient();
 	var username = request.username;
 	var email = request.email;
+	var username = "grr";
 
 	var params = {
 	TableName: 'UserInfo',
 	Item:{
-	"username": username,
-	"email": email
+		"username": username,
+		"email": email
 	}
 	};
 
