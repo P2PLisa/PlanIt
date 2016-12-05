@@ -20,7 +20,7 @@
   },
   "scripts": {
     "preinstall": "npm install -g bower",
-    "postinstall": "bower install",
+    "postinstall": "bower cache clean && bower install",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
 
