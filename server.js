@@ -19,6 +19,9 @@ app.get('/', function(req, res, next) {
     // make sure index is in the right directory. In this case /index.html
     res.render('index');
 });
+app.post('/register/grr/', function(request, response, next){
+	response.send({password: "newElement"});
+});
 
 app.post('/register/:username/', function(request, response, next){
   // Now we automatically get the story in the request object
