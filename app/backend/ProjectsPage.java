@@ -25,23 +25,31 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
-public class Register {
+public class ProjectsPage {
 
-  // Helper function to add a new user.
-  public void addUser(User user) {
+  DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
+  new ProfileCredentialsProvider()));
 
-      Map<String, AttributeValue> user = new HashMap<String, AttributeValue>();
-      user.put("Username", new AttributeValue(user.getUsername()));
-      user.put("Password", new AttributeValue(user.getPassword()));
-      user.put("Email", new AttributeValue(user.getEmail()));
-      user.put("Hash", new AttributeValue(user.hashCode()));
+  Table table = dynamoDB.getTable("ProjectInfo");
 
-      DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
-      new ProfileCredentialsProvider()));
+  // Return the data for a project.
+  public Map<String, AttributeValue> getProject(User user) {
 
-      Table table = dynamoDB.getTable("UserInfo");
-      PutItemRequest putItemRequest = new PutItemRequest(table, user);
-      PutItemResult putItemResult = dynamoDB.putItem(putItemRequest);
+  }
+
+  // Add a new project to the table.
+  public void addProject(User user) {
+
+  }
+
+  // Add a tile to the project
+  public void addTile(User user) {
+
+  }
+
+  // Return the tiles for a project in their JSON format
+  public String getTiles(User user) {
+
 
   }
 }

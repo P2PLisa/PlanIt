@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.websystique.springmvc.model.User;
 
@@ -22,18 +19,21 @@ public class UserServicesImpl implements UserServices{
     public void createUser(User user) {
         user.setId(counter.incrementAndGet());
         users.add(user);
+        Register.addUser(user); // Add the user to the database
     }
 
     public void loginUser(User user) {
-	      // check if user exists
-        if (!doesUserExist(user)) {
-          // Don't really do anything if they don't exist.
+
+        if (doesUserExist(user)) { // check if user exists
         }
 	      //log them in...
     }
 
+    // Look up the user in the table.
+    // Return true or false based on whether or not it's there.
     public boolean doesUserExist(User user) {
-        return false; //TODO change this
+        if (getUserInfo(user) == null) return false;
+        else return true;
     }
 
 }

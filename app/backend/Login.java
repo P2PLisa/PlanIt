@@ -25,23 +25,17 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
-public class Register {
+public class Login {
 
-  // Helper function to add a new user.
-  public void addUser(User user) {
+  DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
+  new ProfileCredentialsProvider()));
 
-      Map<String, AttributeValue> user = new HashMap<String, AttributeValue>();
-      user.put("Username", new AttributeValue(user.getUsername()));
-      user.put("Password", new AttributeValue(user.getPassword()));
-      user.put("Email", new AttributeValue(user.getEmail()));
-      user.put("Hash", new AttributeValue(user.hashCode()));
+  Table table = dynamoDB.getTable("UserInfo");
 
-      DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
-      new ProfileCredentialsProvider()));
+  public Map<String, AttributeValue> getUserInfo(User u) {
 
-      Table table = dynamoDB.getTable("UserInfo");
-      PutItemRequest putItemRequest = new PutItemRequest(table, user);
-      PutItemResult putItemResult = dynamoDB.putItem(putItemRequest);
+    Map<String, AttributeValue> item = table.getItem("Email", u.getEmail());
 
+    return item;
   }
 }

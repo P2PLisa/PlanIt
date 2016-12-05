@@ -17,8 +17,8 @@ public class MainSpringCtrl {
         }
 
       @RequestMapping(method = RequestMethod.GET)
-        public String getIndexPage() {
-            return "index";
+        public String getLoginPage() {
+            return "login";
         }
 
 }
