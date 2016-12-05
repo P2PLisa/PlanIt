@@ -20,7 +20,7 @@ app.get('/', function(req, res, next) {
     res.render('index');
 });
 
-app.get('/register/:username/', function(request, response, next){
+app.post('/register/:username/', function(request, response, next){
   // Now we automatically get the story in the request object
   // We use story ID to create a new element for that story
   response.send({ username: request.username, password: "newElement"});
