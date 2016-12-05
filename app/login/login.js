@@ -27,7 +27,6 @@ angular.module('myApp.login', ['ngRoute'])
                 method: 'POST',
                 url: $scope.base_url + '/signin/' + $scope.login.user,
                 withCredentials: true,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: {
                     name: $scope.login.user,
                     password: $scope.login.password
