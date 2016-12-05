@@ -19,7 +19,7 @@ public class UserServicesImpl implements UserServices{
     public void createUser(User user) {
         user.setId(counter.incrementAndGet());
         users.add(user);
-        Register.addUser(user);
+        Register.addUser(user); // Add the user to the database
     }
 
     public void loginUser(User user) {
@@ -29,8 +29,11 @@ public class UserServicesImpl implements UserServices{
 	      //log them in...
     }
 
+    // Look up the user in the table.
+    // Return true or false based on whether or not it's there.
     public boolean doesUserExist(User user) {
-        return false; //TODO change this
+        if (getUserInfo(user) == null) return false;
+        else return true;
     }
 
 }
