@@ -5,6 +5,7 @@ var env = cfenv.getAppEnv();
 var AWS = require("aws-sdk");
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var dynamodb = new AWS.DynamoDB();
 process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
 process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
 process.env.AWS_REGION = 'us-west-2';
@@ -79,7 +80,7 @@ app.post('/signin/:username', function(request, response, next){
 	    ConsistentRead: false, // optional (true | false)
 	    ReturnConsumedCapacity: 'NONE', // optional (NONE | TOTAL | INDEXES)
 	};
-	docClient.getItem(params, function(err, data) {
+	dynamodb.getItem(params, function(err, data) {
 	    if (err) console.log(err); // an error occurred
 	    else console.log(data); // successful response
 	    response.send(data);
@@ -109,7 +110,7 @@ app.post('/signin/:username', function(request, response, next){
 });
 app.post('/register/:username', function(request, response, next){
 	console.log("meowy");
-	var docClient = new AWS.DynamoDB.DocumentClient();
+	//var docClient = new AWS.DynamoDB.DocumentClient();
 	var username = request.username;
 	var email = request.email;
 
