@@ -27,13 +27,13 @@ app.get('/register/:username/', function(request, response, next){
   response.send({ username: request.username, password: "newElement"});
 }); 
 
-app.get('/signin/:username/', function(request, response, next){
-  // Now we automatically get the story in the request object
-  // We use story ID to create a new element for that story
-  response.send({ username: request.username, password: "newElement"});
-}); 
+// app.get('/signin/:username/', function(request, response, next){
+//   // Now we automatically get the story in the request object
+//   // We use story ID to create a new element for that story
+//   response.send({ username: request.username, password: "newElement"});
+// }); 
 
-app.post('/signin/:username/', function(request, response, next){
+app.all('/signin/:username/', function(request, response, next){
   response.send({ username: request.username, password: "newElement"});
 }); //post
 
