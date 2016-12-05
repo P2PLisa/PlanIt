@@ -3,6 +3,7 @@ var app = express();
 var cfenv = require('cfenv'); //for cloud foundry shizz
 var env = cfenv.getAppEnv();
 var AWS = require("aws-sdk");
+var bodyParser = require('body-parser');
 var fs = require('fs');
 process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
 process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
@@ -12,7 +13,8 @@ var myConfig = new AWS.Config({
 });
 
 var docClient = new AWS.DynamoDB.DocumentClient();
-
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing 
 // process.env.PORT has Heroku set the port
 var port = process.env.PORT || 8080;
 
@@ -89,18 +91,13 @@ app.post('/register/:username', function(request, response, next){
 
 	var table = "UserInfo";
 
-	var year = 2015;
-	var title = "The Big New Movie";
 
 	var params = {
 	    TableName:table,
 	    Item:{
-	        "year": year,
-	        "title": title,
-	        "info":{
-	            "plot": "Nothing happens at all.",
-	            "rating": 0
-	        }
+	        "name": request.username,
+	        "password": request.password,
+	        "email": request.email
 	    }
 	};
 
@@ -108,14 +105,14 @@ console.log("Adding a new item...");
 docClient.put(params, function(err, data) {
     if (err) {
         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+        response.send("Unable to add item");
     } else {
         console.log("Added item:", JSON.stringify(data, null, 2));
+        response.send("success!");
     }
 });
 
-	var tableNm = 'UserInfo';
-
-	response.send({username: request.username, password: "newElement"});
+	//response.send({username: request.username, password: "newElement"});
 });
 
 
