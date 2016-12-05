@@ -5,6 +5,7 @@ var env = cfenv.getAppEnv();
 var AWS = require("aws-sdk");
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var dynamodb = new AWS.DynamoDB();
 process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
 process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
 process.env.AWS_REGION = 'us-west-2';
@@ -62,39 +63,64 @@ app.post('/signin/grr', function(request, response, next){
 });
 app.post('/signin/:username', function(request, response, next){
 	console.log("meow");
+	process.env.AWS_REGION = 'us-west-2';
 	var docClient = new AWS.DynamoDB.DocumentClient();
-	var username = request.user;
+
 	var params = {
-	TableName: 'UserInfo',
-	IndexName: 'username',
-	KeyConditions: [
-            DynamoDB.Condition("username", "EQ", username)
-        ]
+	    TableName: 'UserInfo',
+	    Key: { // a map of attribute name to AttributeValue for all primary key attributes
+	    
+	        username: { S: request.username }
+	        // more attributes...
+
+	    },
+	    AttributesToGet: [ // optional (list of specific attribute names to return)
+	        'email',
+	        // ... more attribute names ...
+	    ],
+	    ConsistentRead: false, // optional (true | false)
+	    ReturnConsumedCapacity: 'NONE', // optional (NONE | TOTAL | INDEXES)
 	};
-	docClient.query(params, function(err, data) {
-	    if (err) {
-	    	response.status(200).send(JSON.stringify(err, null, 2))
-	        //response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
-	    } else {
-	        response.send("Query succeeded.");
-	        data.Items.forEach(function(item) {
-	            //response.send()
-	        });
-	    }
+	dynamodb.getItem(params, function(err, data) {
+	    if (err) console.log(err); // an error occurred
+	    else console.log(data); // successful response
+	    response.send(data);
 	});
+
+
+	// var username = request.user;
+	// var params = {
+	// TableName: 'UserInfo',
+	// IndexName: 'username',
+	// KeyConditions: [
+ //            DynamoDB.Condition("username", "EQ", username)
+ //        ]
+	// };
+	// docClient.query(params, function(err, data) {
+	//     if (err) {
+	//     	response.status(200).send(JSON.stringify(err, null, 2))
+	//         //response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
+	//     } else {
+	//         response.send("Query succeeded.");
+	//         data.Items.forEach(function(item) {
+	//             //response.send()
+	//         });
+	//     }
+	// });
 	//response.send({password: "newElement"});
 });
 app.post('/register/:username', function(request, response, next){
 	console.log("meowy");
-	var docClient = new AWS.DynamoDB.DocumentClient();
-	var username = request.user;
+	//var docClient = new AWS.DynamoDB.DocumentClient();
+	var username = request.username;
 	var email = request.email;
+	var username = "grr";
 
 	var params = {
 	TableName: 'UserInfo',
 	Item:{
-	"username": username,
-	"email": email
+		"username": username,
+		"email": email
 	}
 	};
 
