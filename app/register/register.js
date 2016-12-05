@@ -25,7 +25,7 @@ angular.module('myApp.register', ['ngRoute'])
 
         $scope.create = function ($routeProvider) {
             // POST request for creating a user
-            console.log("Register",register);
+            console.log("Register",$scope.register);
             $http({
                 method: 'POST',
                 url: $scope.base_url + '/register/' + $scope.register.user,
