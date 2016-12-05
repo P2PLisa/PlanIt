@@ -61,28 +61,30 @@ app.post('/signin/grr', function(request, response, next){
 });
 app.post('/signin/:username', function(request, response, next){
 	console.log("meowy");
-	// var docClient = new AWS.DynamoDB.DocumentClient();
- //    var params = {
- //        TableName: "UserInfo",
- //        KeyConditionExpression: "#username = :username",
- //        ExpressionAttributeNames:{
- //            "#username": "username"
- //            },
- //        ExpressionAttributeValues: {
- //            ":password": request.password
- //            }
- //        };
- //    docClient.query(params, function(err, data) {
-	//     if (err) {
-	//         console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
-	//     } else {
-	//         console.log("Query succeeded.");
-	//         data.Items.forEach(function(item) {
-	//             //response.send()
-	//         });
-	//     }
-	// });
-	response.send({username: request.user, password: "newElement"});
+	var docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+        TableName: "UserInfo",
+        KeyConditionExpression: "#username = :username",
+        ExpressionAttributeNames:{
+            "#username": "request.user"
+            },
+        ExpressionAttributeValues: {
+            ":email": request.user,
+            ":password": request.password
+            }
+        };
+    docClient.query(params, function(err, data) {
+	    if (err) {
+	        response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
+	    } else {
+	        response.send("Query succeeded.");
+	        data.Items.forEach(function(item) {
+	            //response.send()
+	        });
+	    }
+	});
+	
+	response.send({username: request.user, password: "newElement", user: request.user});
 });
 
 app.post('/register/:username', function(request, response, next){
