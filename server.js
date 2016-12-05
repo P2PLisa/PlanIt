@@ -12,7 +12,9 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
+app.set('views', __dirname + '/app/register/');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 var router = express.Router();
 
 router.use(function(req, res, next) {
@@ -25,8 +27,9 @@ router.get('/:username', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-	console.log("kill me");
-	res.send('moooo');
+	//console.log("kill me");
+	res.render('register.html');
+	//res.send('moooo');
 });
 
 
