@@ -27,6 +27,11 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
 public class ProjectsPage {
 
+  DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
+  new ProfileCredentialsProvider()));
+
+  Table table = dynamoDB.getTable("ProjectInfo");
+
   // Return the data for a project.
   public Map<String, AttributeValue> getProject(User user) {
 
@@ -37,12 +42,14 @@ public class ProjectsPage {
 
   }
 
+  // Add a tile to the project
   public void addTile(User user) {
 
   }
 
   // Return the tiles for a project in their JSON format
   public String getTiles(User user) {
-      
+
+
   }
 }

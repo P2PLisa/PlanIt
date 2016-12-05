@@ -27,22 +27,15 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
 public class Login {
 
-  public Map<String, AttributeValue> getUserInfo(User u) {
-    DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
-    new ProfileCredentialsProvider()));
+  DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
+  new ProfileCredentialsProvider()));
 
-    Table table = dynamoDB.getTable("UserInfo");
+  Table table = dynamoDB.getTable("UserInfo");
+
+  public Map<String, AttributeValue> getUserInfo(User u) {
 
     Map<String, AttributeValue> item = table.getItem("Email", u.getEmail());
 
     return item;
   }
-
-  // public static void main(String[] args) throws Exception {
-  //   DynamoDB dynamoDB = new DynamoDB(new AmazonDynamoDBClient(
-  //   new ProfileCredentialsProvider()));
-  //
-  //   Table table = dynamoDB.getTable("UserInfo");
-  //
-  // }
 }
