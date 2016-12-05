@@ -18,6 +18,7 @@ app.get('/', function(req, res, next) {
 
     // make sure index is in the right directory. In this case /index.html
     res.render('index');
+    console.log("yay this works");
 });
 app.post('/register/grr/', function(request, response, next){
 	response.send({password: "newElement"});
