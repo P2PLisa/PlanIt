@@ -28,7 +28,7 @@ angular.module('myApp.register', ['ngRoute'])
 
             $http({
                 method: 'POST',
-                url: $scope.base_url + '/register/' + $scope.register.email,
+                url: $scope.base_url + '/register/' + $scope.register.user,
                 withCredentials: true,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: {
