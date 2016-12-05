@@ -19,7 +19,7 @@
     "protractor": "^4.0.9"
   },
   "scripts": {
-    "prepublish":"node_modules/.bin/bower install", //https://developer.ibm.com/answers/questions/16594/how-to-install-packages-on-node-js.html
+    "prepublish":"node_modules/.bin/bower install",
     "preinstall": "npm install -g bower",
     "postinstall": "bower cache clean && bower install",
     "update-deps": "npm update",
