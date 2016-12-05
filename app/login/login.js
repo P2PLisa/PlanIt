@@ -21,7 +21,7 @@ angular.module('myApp.login', ['ngRoute'])
         };
 
         $scope.authenticate = function () {
-
+            $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
             // POST request for logging in a user
             $http({
                 method: 'POST',
