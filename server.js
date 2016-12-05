@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var cfenv = require('cfenv'); //for cloud foundry shizz
+var env = cfenv.getAppEnv();
 // process.env.PORT has Heroku set the port
 var port = process.env.PORT || 8080;
 
@@ -14,17 +15,17 @@ app.use(function(req, res, next) {
 });
 app.set('views', __dirname + '/app/register/');
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 var router = express.Router();
 router.use(function(req, res, next) {
 	console.log("arf");
 	next();
 });
 
-router.get('/:username', function(req, res) {
-	console.log("kill me");
-	res.send('req.username');
-});
+// router.get('/:username', function(req, res) {
+// 	console.log("kill me");
+// 	res.send('req.username');
+// });
 
 router.get('/register', function(req, res) {
 	//console.log("kill me");
@@ -57,7 +58,7 @@ app.route('/login')
     .post(function(req, res) {
         console.log('processing');
         res.send('processing the login form!');
-    });
+ });
 
 
 app.use('/', router);
