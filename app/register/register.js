@@ -25,7 +25,7 @@ angular.module('myApp.register', ['ngRoute'])
 
         $scope.create = function ($routeProvider) {
             // POST request for creating a user
-
+            console.log("Register",register);
             $http({
                 method: 'POST',
                 url: $scope.base_url + '/register/' + $scope.register.user,
@@ -40,10 +40,11 @@ angular.module('myApp.register', ['ngRoute'])
                 }
             }).then(function successCallback(response) {
                 //All data returned will be under response.data
+                $location.path("/projects")
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
-
+                alert('Register failed');
             });
         }
     });
