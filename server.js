@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
 process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
-process.env.REGION = 'us-west-2';
+process.env.AWS_REGION = 'us-west-2';
 var myCredentials = new AWS.EnvironmentCredentials('AWS');
 var myConfig = new AWS.Config({
   credentials: myCredentials, region: 'us-west-2'
@@ -63,13 +63,13 @@ app.post('/signin/grr', function(request, response, next){
 app.post('/signin/:username', function(request, response, next){
 	console.log("meowy");
 	var docClient = new AWS.DynamoDB.DocumentClient();
-	var username = 'bob';
+	var username = 'test';
 
 	var params = {
 	TableName: 'UserInfo',
 	Item:{
-	"username": 'bob',
-	"email": 'blah'
+	"username": 'test',
+	"email": 'test@gmail.com'
 	}
 	};
 
