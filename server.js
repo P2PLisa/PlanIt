@@ -15,12 +15,13 @@ app.use(function(req, res, next) {
 
 // set the home page route
 app.get('/', function(req, res, next) {
-
+	console.log("yay this works");
     // make sure index is in the right directory. In this case /index.html
     res.render('index');
-    console.log("yay this works");
+
 });
-app.post('/signin/grr/', function(request, response, next){
+app.post('/signin/grr', function(request, response, next){
+	console.log("meow");
 	response.send({password: "newElement"});
 });
 
