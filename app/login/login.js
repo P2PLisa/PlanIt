@@ -25,6 +25,7 @@ angular.module('myApp.login', ['ngRoute'])
             // POST request for logging in a user
             $http({
                 method: 'POST',
+                Content-Type: 'text/plain'
                 url: $scope.base_url + '/signin/' + $scope.login.user,
                 withCredentials: true,
                 data: {
