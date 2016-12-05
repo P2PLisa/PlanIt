@@ -63,16 +63,17 @@ app.post('/signin/grr', function(request, response, next){
 app.post('/signin/:username', function(request, response, next){
 	console.log("meow");
 	var docClient = new AWS.DynamoDB.DocumentClient();
+	var username = request.user;
 	var params = {
 	TableName: 'UserInfo',
-	Item:{
-	"username": request.user,
-	"email": request.email
-	}
+	IndexName: 'username',
+	KeyConditions: [
+            DynamoDB.Condition("username", "EQ", username)
+        ]
 	};
 	docClient.query(params, function(err, data) {
 	    if (err) {
-	    	response.status("Unable to query. Error:").send(JSON.stringify(err, null, 2))
+	    	response.status(200).send(JSON.stringify(err, null, 2))
 	        //response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
 	    } else {
 	        response.send("Query succeeded.");
@@ -86,13 +87,14 @@ app.post('/signin/:username', function(request, response, next){
 app.post('/register/:username', function(request, response, next){
 	console.log("meowy");
 	var docClient = new AWS.DynamoDB.DocumentClient();
-	var username = 'test';
+	var username = request.user;
+	var email = request.email;
 
 	var params = {
 	TableName: 'UserInfo',
 	Item:{
-	"username": request.user,
-	"email": request.email
+	"username": username,
+	"email": email
 	}
 	};
 
