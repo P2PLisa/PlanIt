@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
 process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
+process.env.REGION = 'us-west-2';
 var myCredentials = new AWS.EnvironmentCredentials('AWS');
 var myConfig = new AWS.Config({
   credentials: myCredentials, region: 'us-west-2'
@@ -126,7 +127,7 @@ console.log("Adding a new item...");
 docClient.put(params, function(err, data) {
     if (err) {
         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-        response.send("Unable to add item", JSON.stringify(err, null, 2));
+        response.send(200, "Unable to add item", JSON.stringify(err, null, 2));
     } else {
         console.log("Added item:", JSON.stringify(data, null, 2));
         response.send("success!");
