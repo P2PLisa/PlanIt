@@ -1,5 +1,4 @@
 var express = require('express');
-var cors = require('cors');
 var app = express();
 var cfenv = require('cfenv'); //for cloud foundry shizz
 // process.env.PORT has Heroku set the port
