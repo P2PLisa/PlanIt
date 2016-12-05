@@ -63,10 +63,11 @@ app.post('/signin/grr', function(request, response, next){
 app.post('/signin/:username', function(request, response, next){
 	console.log("meow");
 	var docClient = new AWS.DynamoDB.DocumentClient();
+	var username = request.user;
 	var params = {
 	TableName: 'UserInfo',
 	Item:{
-	"username": request.user,
+	"username": username,
 	"email": request.email
 	}
 	};
@@ -86,13 +87,14 @@ app.post('/signin/:username', function(request, response, next){
 app.post('/register/:username', function(request, response, next){
 	console.log("meowy");
 	var docClient = new AWS.DynamoDB.DocumentClient();
-	var username = 'test';
+	var username = request.user;
+	var email = request.email;
 
 	var params = {
 	TableName: 'UserInfo',
 	Item:{
-	"username": request.user,
-	"email": request.email
+	"username": username,
+	"email": email
 	}
 	};
 
