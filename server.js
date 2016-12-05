@@ -66,10 +66,10 @@ app.post('/signin/:username', function(request, response, next){
 	var username = request.user;
 	var params = {
 	TableName: 'UserInfo',
-	Item:{
-	"username": username,
-	"email": request.email
-	}
+	IndexName: 'username',
+	KeyConditions: [
+            DynamoDB.Condition("username", "EQ", username)
+        ]
 	};
 	docClient.query(params, function(err, data) {
 	    if (err) {
