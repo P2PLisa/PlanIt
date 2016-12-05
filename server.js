@@ -61,6 +61,29 @@ app.post('/signin/grr', function(request, response, next){
 	response.send({password: "newElement"});
 });
 app.post('/signin/:username', function(request, response, next){
+	console.log("meow");
+	var docClient = new AWS.DynamoDB.DocumentClient();
+	var params = {
+	TableName: 'UserInfo',
+	Item:{
+	"username": request.user,
+	"email": request.email
+	}
+	};
+	docClient.query(params, function(err, data) {
+	    if (err) {
+	    	response.status("Unable to query. Error:").send(JSON.stringify(err, null, 2))
+	        //response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
+	    } else {
+	        response.send("Query succeeded.");
+	        data.Items.forEach(function(item) {
+	            //response.send()
+	        });
+	    }
+	});
+	//response.send({password: "newElement"});
+});
+app.post('/register/:username', function(request, response, next){
 	console.log("meowy");
 	var docClient = new AWS.DynamoDB.DocumentClient();
 	var username = 'test';
@@ -68,8 +91,8 @@ app.post('/signin/:username', function(request, response, next){
 	var params = {
 	TableName: 'UserInfo',
 	Item:{
-	"username": 'test',
-	"email": 'test@gmail.com'
+	"username": request.user,
+	"email": request.email
 	}
 	};
 
@@ -107,35 +130,35 @@ app.post('/signin/:username', function(request, response, next){
 	response.send({username: request.user, password: "newElement", user: request.user});
 });
 
-app.post('/register/:username', function(request, response, next){
-	console.log("meowy");
-	var docClient = new AWS.DynamoDB.DocumentClient();
+// app.post('/register/:username', function(request, response, next){
+// 	console.log("meowy");
+// 	var docClient = new AWS.DynamoDB.DocumentClient();
 
-	var table = "UserInfo";
+// 	var table = "UserInfo";
 
 
-	var params = {
-	    TableName:table,
-	    Item:{
-	        "name": request.username,
-	        "password": request.password,
-	        "email": request.email
-	    }
-	};
+// 	var params = {
+// 	    TableName:table,
+// 	    Item:{
+// 	        "name": request.username,
+// 	        "password": request.password,
+// 	        "email": request.email
+// 	    }
+// 	};
 
-console.log("Adding a new item...");
-docClient.put(params, function(err, data) {
-    if (err) {
-        console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-        response.send(200, "Unable to add item", JSON.stringify(err, null, 2));
-    } else {
-        console.log("Added item:", JSON.stringify(data, null, 2));
-        response.send("success!");
-    }
-});
+// console.log("Adding a new item...");
+// docClient.put(params, function(err, data) {
+//     if (err) {
+//         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+//         response.send(200, "Unable to add item", JSON.stringify(err, null, 2));
+//     } else {
+//         console.log("Added item:", JSON.stringify(data, null, 2));
+//         response.send("success!");
+//     }
+// });
 
-	//response.send({username: request.username, password: "newElement"});
-});
+// 	//response.send({username: request.username, password: "newElement"});
+// });
 
 
 app.route('/login')
