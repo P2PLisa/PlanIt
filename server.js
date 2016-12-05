@@ -2,6 +2,17 @@ var express = require('express');
 var app = express();
 var cfenv = require('cfenv'); //for cloud foundry shizz
 var env = cfenv.getAppEnv();
+var AWS = require("aws-sdk");
+var fs = require('fs');
+process.env.AWS_SECRET_ACCESS_KEY = '7fsriumvJQT7Ns1bzZwwI/pEtU38PjTvRoODWlKA';
+process.env.AWS_ACCESS_KEY_ID = 'AKIAJ6JZETCZR4K5PQKA';
+var myCredentials = new AWS.CognitoIdentityCredentials({IdentityPoolId:'IDENTITY_POOL_ID'});
+var myConfig = new AWS.Config({
+  credentials: myCredentials, region: 'us-west-2'
+});
+
+var docClient = new AWS.DynamoDB.DocumentClient();
+
 // process.env.PORT has Heroku set the port
 var port = process.env.PORT || 8080;
 
@@ -48,8 +59,65 @@ app.post('/signin/grr', function(request, response, next){
 });
 app.post('/signin/:username', function(request, response, next){
 	console.log("meowy");
+	var docClient = new AWS.DynamoDB.DocumentClient();
+    var params = {
+        TableName: "UserInfo",
+        KeyConditionExpression: "#username = :username",
+        ExpressionAttributeNames:{
+            "#username": "username"
+            },
+        ExpressionAttributeValues: {
+            ":email":email
+            }
+        };
+    docClient.query(params, function(err, data) {
+	    if (err) {
+	        console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
+	    } else {
+	        console.log("Query succeeded.");
+	        data.Items.forEach(function(item) {
+	            //response.send()
+	        });
+	    }
+	});
 	response.send({username: request.username, password: "newElement"});
 });
+
+app.post('/register/:username', function(request, response, next){
+	console.log("meowy");
+	var docClient = new AWS.DynamoDB.DocumentClient();
+
+	var table = "UserInfo";
+
+	var year = 2015;
+	var title = "The Big New Movie";
+
+	var params = {
+	    TableName:table,
+	    Item:{
+	        "year": year,
+	        "title": title,
+	        "info":{
+	            "plot": "Nothing happens at all.",
+	            "rating": 0
+	        }
+	    }
+	};
+
+console.log("Adding a new item...");
+docClient.put(params, function(err, data) {
+    if (err) {
+        console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+    } else {
+        console.log("Added item:", JSON.stringify(data, null, 2));
+    }
+});
+
+	var tableNm = 'UserInfo';
+
+	response.send({username: request.username, password: "newElement"});
+});
+
 
 app.route('/login')
 
