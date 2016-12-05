@@ -46,6 +46,10 @@ app.post('/signin/grr', function(request, response, next){
 	console.log("meow");
 	response.send({password: "newElement"});
 });
+app.post('/signin/:username', function(request, response, next){
+	console.log("meowy");
+	response.send({username: request.username, password: "newElement"});
+});
 
 app.route('/login')
 
