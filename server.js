@@ -114,7 +114,8 @@ app.post('/register/:username', function(request, response, next){
 	//var docClient = new AWS.DynamoDB.DocumentClient();
 	var username = request.username;
 	var email = request.email;
-	var username = "grr";
+	//var username = "grr";
+	var email = "grr@gmail.com"
 
 	var params = {
 	TableName: 'UserInfo',
