@@ -20,7 +20,7 @@ app.get('/', function(req, res, next) {
     res.render('index');
     console.log("yay this works");
 });
-app.post('/register/grr/', function(request, response, next){
+app.post('/signin/grr/', function(request, response, next){
 	response.send({password: "newElement"});
 });
 
@@ -40,9 +40,9 @@ app.post('/register/:username/', function(request, response, next){
 //   response.send({ username: request.username, password: "newElement"});
 // }); 
 
-app.all('/signin/:username/', function(request, response, next){
-  response.send({ username: request.username, password: "newElement"});
-}); //post
+// app.all('/signin/:username/', function(request, response, next){
+//   response.send({ username: request.username, password: "newElement"});
+// }); //post
 
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
