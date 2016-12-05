@@ -1,7 +1,13 @@
+.staging {
+    color: #000000;
+}
+.staging md-list-item {
+    background-color: #00006e
+}
 .definite {
    color: #43A047;
 }
-.definite md-card {
+.definite md-list-item {
     color: #FFFFFF;
     background-color: #43A047;
 }
@@ -10,7 +16,7 @@
     color: #FFB300;
 }
 
-.maybe md-card {
+.maybe md-list-item {
     color: #FFFFFF;
     background-color: #FFB300;
 }
@@ -19,7 +25,7 @@
     color: #FF1744;
 }
 
-.question md-card {
+.question md-list-item {
     color: #FFFFFF;
     background-color: #FF1744;
 }
