@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var cfenv = require('cfenv'); //for cloud foundry shizz
 // process.env.PORT has Heroku set the port
-var port = process.env.VCAP_APP_PORT || 8080;
+var port = process.env.PORT || 8080;
 
 // make express look in the right directory...
 app.use(express.static(__dirname));
