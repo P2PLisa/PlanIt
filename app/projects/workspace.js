@@ -21,27 +21,33 @@ angular.module('myApp.workspace', ['ngRoute', 'ngMaterial'])
         $scope.topbar =
             [{
                 "title": "My Plan",
-                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project.",
+                "type": 0
             }, {
                 "title": "Dont Plan It",
                 "description": "A project brainstorming app that also helps you pick languages and framework for your project."
             }, {
                 "title": "What Plan It",
-                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
-            }, {
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project.",
+                "type": 1
+        }, {
                 "title": "Who's Plan It",
-                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project.",
+                "type": 1
             }, {
                 "title": "This Plan It",
-                "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+                "description": "A project brainstorming app that also helps you pick languages and framework for your project.",
+                "type": 2
             },
                 {
                     "title": "This Plan It",
-                    "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+                    "description": "A project brainstorming app that also helps you pick languages and framework for your project.",
+                    "type": 3
                 },
                 {
                     "title": "This Plan It",
-                    "description": "A project brainstorming app that also helps you pick languages and framework for your project."
+                    "description": "A project brainstorming app that also helps you pick languages and framework for your project.",
+                    "type": 3
                 }];
 
         $scope.create = function () {

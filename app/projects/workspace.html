@@ -10,33 +10,28 @@
         </md-button>
     </div>
 </md-toolbar>
-<!--<div layout="row" class="md-padding">-->
-<!--<md-card ng-repeat="item in topbar" flex="30">-->
-<!--<md-card-content>-->
-<!--<div flex layout="column">-->
-<!--<md-card-title>-->
-<!--<md-card-title-text>-->
-<!--<span class="md-headline">{{item.title}}</span>-->
-<!--<span class="md-subhead">{{item.description}}</span>-->
-<!--</md-card-title-text>-->
-<!--</md-card-title>-->
-<!--<p>-->
-<!--<md-button aria-label="view-project" class="md-primary md-raised">-->
-<!--Move-->
-<!--</md-button>-->
-<!--</p>-->
-<!--</div>-->
-<!--</md-card-content>-->
-<!--</md-card>-->
-<!--</div>-->
 <div layout="row" flex>
     <div layout="column" layout-align="center center" flex="25" class="staging">
         <h1>To Be Assigned</h1>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in topbar" >
+            <md-list-item class="md-3-line md-long-text" ng-repeat="item in topbar | filter:0">
                 <div class="md-list-item-text" layout="column">
                     <h3 style="color: #FFFFFF">{{item.title}}</h3>
-                    <h4 style="color: #FFFFFF">{{item.description}}</h4>
+                    <p style="color: #FFFFFF">{{item.description}}</p>
+                    <md-select class="md-secondary" placeholder="Type" ng-model="item.type">
+                        <md-option value="0">
+                            Unassigned
+                        </md-option>
+                        <md-option value="1">
+                            Questionable
+                        </md-option>
+                        <md-option value="2">
+                            Maybe
+                        </md-option>
+                        <md-option value="3">
+                            Definitely
+                        </md-option>
+                    </md-select>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
@@ -45,10 +40,24 @@
     <div layout="column" layout-align="center center" flex="25" class="question">
         <h1>Questionable</h1>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in topbar">
+            <md-list-item class="md-3-line md-long-text" ng-repeat="item in topbar | filter:1">
                 <div class="md-list-item-text" layout="column">
                     <h3 style="color: #FFFFFF">{{item.title}}</h3>
-                    <h4 style="color: #FFFFFF">{{item.description}}</h4>
+                    <p style="color: #FFFFFF">{{item.description}}</p>
+                    <md-select class="md-secondary" placeholder="Type" ng-model="item.type">
+                        <md-option value="0">
+                            Unassigned
+                        </md-option>
+                        <md-option value="1">
+                            Questionable
+                        </md-option>
+                        <md-option value="2">
+                            Maybe
+                        </md-option>
+                        <md-option value="3">
+                            Definitely
+                        </md-option>
+                    </md-select>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
@@ -57,10 +66,24 @@
     <div layout="column" layout-align="center center" flex="25" class="maybe">
         <h1>Maybe</h1>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in topbar">
+            <md-list-item class="md-3-line md-long-text" ng-repeat="item in topbar | filter:2">
                 <div class="md-list-item-text" layout="column">
                     <h3 style="color: #FFFFFF">{{item.title}}</h3>
-                    <h4 style="color: #FFFFFF">{{item.description}}</h4>
+                    <p style="color: #FFFFFF">{{item.description}}</p>
+                    <md-select class="md-secondary" placeholder="Type" ng-model="item.type">
+                        <md-option value="0">
+                            Unassigned
+                        </md-option>
+                        <md-option value="1">
+                            Questionable
+                        </md-option>
+                        <md-option value="2">
+                            Maybe
+                        </md-option>
+                        <md-option value="3">
+                            Definitely
+                        </md-option>
+                    </md-select>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
@@ -69,10 +92,24 @@
     <div layout="column" layout-align="center center" flex="25" class="definite">
         <h1>Definitely</h1>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in topbar">
+            <md-list-item class="md-3-line md-long-text" ng-repeat="item in topbar | filter:3">
                 <div class="md-list-item-text" layout="column">
                     <h3 style="color: #FFFFFF">{{item.title}}</h3>
-                    <h4 style="color: #FFFFFF">{{item.description}}</h4>
+                    <p style="color: #FFFFFF">{{item.description}}</p>
+                    <md-select class="md-secondary" placeholder="Type" ng-model="item.type">
+                        <md-option value="0">
+                            Unassigned
+                        </md-option>
+                        <md-option value="1">
+                            Questionable
+                        </md-option>
+                        <md-option value="2">
+                            Maybe
+                        </md-option>
+                        <md-option value="3">
+                            Definitely
+                        </md-option>
+                    </md-select>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
