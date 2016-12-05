@@ -61,28 +61,28 @@ app.post('/signin/grr', function(request, response, next){
 });
 app.post('/signin/:username', function(request, response, next){
 	console.log("meowy");
-	var docClient = new AWS.DynamoDB.DocumentClient();
-    var params = {
-        TableName: "UserInfo",
-        KeyConditionExpression: "#username = :username",
-        ExpressionAttributeNames:{
-            "#username": "username"
-            },
-        ExpressionAttributeValues: {
-            ":email":email
-            }
-        };
-    docClient.query(params, function(err, data) {
-	    if (err) {
-	        console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
-	    } else {
-	        console.log("Query succeeded.");
-	        data.Items.forEach(function(item) {
-	            //response.send()
-	        });
-	    }
-	});
-	response.send({username: request.username, password: "newElement"});
+	// var docClient = new AWS.DynamoDB.DocumentClient();
+ //    var params = {
+ //        TableName: "UserInfo",
+ //        KeyConditionExpression: "#username = :username",
+ //        ExpressionAttributeNames:{
+ //            "#username": "username"
+ //            },
+ //        ExpressionAttributeValues: {
+ //            ":password": request.password
+ //            }
+ //        };
+ //    docClient.query(params, function(err, data) {
+	//     if (err) {
+	//         console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
+	//     } else {
+	//         console.log("Query succeeded.");
+	//         data.Items.forEach(function(item) {
+	//             //response.send()
+	//         });
+	//     }
+	// });
+	response.send({username: request.user, password: "newElement"});
 });
 
 app.post('/register/:username', function(request, response, next){
@@ -105,7 +105,7 @@ console.log("Adding a new item...");
 docClient.put(params, function(err, data) {
     if (err) {
         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-        response.send("Unable to add item");
+        response.send("Unable to add item", JSON.stringify(err, null, 2));
     } else {
         console.log("Added item:", JSON.stringify(data, null, 2));
         response.send("success!");
