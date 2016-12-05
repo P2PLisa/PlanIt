@@ -17,6 +17,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 var router = express.Router();
 router.use(function(req, res, next) {
+	console.log("arf");
 	next();
 });
 
@@ -44,6 +45,20 @@ app.post('/signin/grr', function(request, response, next){
 	console.log("meow");
 	response.send({password: "newElement"});
 });
+
+app.route('/login')
+
+    // show the form (GET http://localhost:8080/login)
+    .get(function(req, res) {
+        res.send('this is the login form');
+    })
+
+    // process the form (POST http://localhost:8080/login)
+    .post(function(req, res) {
+        console.log('processing');
+        res.send('processing the login form!');
+    });
+
 
 app.use('/', router);
 
