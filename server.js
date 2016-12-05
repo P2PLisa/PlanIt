@@ -73,7 +73,7 @@ app.post('/signin/:username', function(request, response, next){
 	};
 	docClient.query(params, function(err, data) {
 	    if (err) {
-	    	response.status("Unable to query. Error:").send(JSON.stringify(err, null, 2))
+	    	response.status(200).send(JSON.stringify(err, null, 2))
 	        //response.send("Unable to query. Error:", JSON.stringify(err, null, 2));
 	    } else {
 	        response.send("Query succeeded.");
