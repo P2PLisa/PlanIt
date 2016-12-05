@@ -25,7 +25,7 @@ angular.module('myApp.login', ['ngRoute'])
             // POST request for logging in a user
             $http({
                 method: 'POST',
-                url: $scope.base_url + '/signin',
+                url: $scope.base_url + '/signin/' + $scope.login.user,
                 withCredentials: true,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: {
@@ -39,6 +39,6 @@ angular.module('myApp.login', ['ngRoute'])
                 // or server returns response with an error status.
 
             });
-            $location.path("/projects");
+            //$location.path("/projects");
         }
     });
