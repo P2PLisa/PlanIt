@@ -31,7 +31,7 @@ angular.module('myApp.login', ['ngRoute'])
                 url: $scope.base_url + '/signin/' + $scope.login.user,
                 withCredentials: true,
                 data: {
-                    name: $scope.login.user,
+                    username: $scope.login.user,
                     password: $scope.login.password
                 }
             }).then(function successCallback(response) {
