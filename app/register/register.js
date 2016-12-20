@@ -21,7 +21,7 @@ angular.module('myApp.register', ['ngRoute'])
             password: ''
         };
 
-        $scope.base_url = "https://planit.mybluemix.net";
+        $scope.base_url = "https://planitapplication.herokuapp.com";
 
         $scope.create = function ($routeProvider) {
             // POST request for creating a user
